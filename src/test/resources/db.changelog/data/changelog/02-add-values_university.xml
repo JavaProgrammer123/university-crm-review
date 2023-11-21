@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="test-university-values" author="MishaBucha">
+        <insert tableName="university">
+            <column name="name" value="ПГУАС"/>
+            <column name="id" value="1"/>
+            <column name="city" value="Пенза"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="test-add-values-user" author="MishaBucha">
+        <insert tableName="user_crm">
+            <column name="id" value="54986c2c-e4c9-11ed-b5ea-0242ac120002"/>
+            <column name="mail" value="test@mail.ru"/>
+            <column name="name" value="test"/>
+            <column name="patronymic" value="test"/>
+            <column name="surname" value="test"/>
+            <column name="phone" value="888888"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

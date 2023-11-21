@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="1.0.0-03" author="MishaBucha">
+        <createTable tableName="student">
+            <column name="id" type="INT8" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="group_number" type="varchar(255)" />
+            <column name="telegram" type="INT8">
+                <constraints nullable="true" unique="true"/>
+            </column>
+            <column name="user_id" type="uuid" />
+            <column name="university_id" type="INT8" />
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="student"
+                                 baseTableSchemaName="public"
+                                 constraintName="student_user_crm_id"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_crm"
+                                 referencedTableSchemaName="public"/>
+        <addForeignKeyConstraint baseColumnNames="university_id"
+                                 baseTableName="student"
+                                 baseTableSchemaName="public"
+                                 constraintName="student_university_id"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="university"
+                                 referencedTableSchemaName="public"/>
+    </changeSet>
+</databaseChangeLog>

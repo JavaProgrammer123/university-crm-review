@@ -1,0 +1,12 @@
+image: mcr.microsoft.com/dotnet/core/sdk:3.1
+
+stages:                                                                                                                                         
+ - build
+
+maven-build:                                                                                                                                    
+  image: maven:3-jdk-11                                                                                                                         
+  stage: build                                                                                                                                  
+  script: "mvn package -B"                                                                                                                      
+  artifacts:                                                                                                                                    
+    paths:                                                                                                                                      
+      - target/universityCRM-0.0.1-SNAPSHOT.jar

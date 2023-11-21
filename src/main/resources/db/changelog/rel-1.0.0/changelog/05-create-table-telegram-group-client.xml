@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="1.0.0-05" author="MishaBucha">
+        <createTable tableName="telegram_group_student">
+            <column name="telegram_group_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="students_id" type="INT8">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="telegram_group_id"
+                                 baseTableName="telegram_group_student"
+                                 baseTableSchemaName="public"
+                                 constraintName="telegram_group_id_many_to_many"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="telegram_group"
+                                 referencedTableSchemaName="public"/>
+
+        <addForeignKeyConstraint baseTableName="telegram_group_student"
+                                 baseColumnNames="students_id"
+                                 constraintName="student_id_many_to_many"
+                                 onDelete="RESTRICT"
+                                 onUpdate="RESTRICT"
+                                 referencedTableName="student"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <changeSet id="test-student-values" author="MishaBucha">
+        <insert tableName="student">
+            <column name="id" value="1"/>
+            <column name="group_number" value="21ИСТ2"/>
+            <column name="user_id" value="54986c2c-e4c9-11ed-b5ea-0242ac120002"/>
+            <column name="university_id" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

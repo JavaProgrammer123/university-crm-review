@@ -1,0 +1,75 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8484/auth/realms/my_realm/protocol/openid-connect/certs
+  jpa:
+    generate-ddl: 'true'
+    properties:
+      hibernate:
+        jdbc:
+          enable_lazy_load_no_trans: 'true'
+          lob:
+            non_contextual_creation: 'true'
+    hibernate:
+      ddl-auto: validate
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: 'true'
+  kafka:
+    consumer:
+      group-id: app.1
+  datasource:
+    driverClassName: org.postgresql.Driver
+    password: mcr
+    username: mcr
+    url: jdbc:postgresql://localhost:5432/micro
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+    password: mcr
+    user: mcr
+    url: jdbc:postgresql://localhost:5432/micro
+    enabled: 'true'
+  application:
+    name: ${MicroService:spring-security-keycloak-resource}
+
+management:
+  endpoints.web.exposure.include: 'prometheus, health'
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
+
+keycloak:
+  auth-server-url: http://localhost:8484/auth
+  realm: crm_system
+  resource: my_client
+  public-client: 'true'
+  use-resource-role-mappings: 'true'
+utils:
+  keycloak:
+    realm-segment: /admin/realms/%s/users
+    role-segment: /%s/role-mappings/realm
+    admin-realm: master
+    admin-client: admin-cli
+    reset-password-segment: /%s/reset-password
+    admin-login: admin
+    admin-password: admin_password
+    get-role-segment: /available
+    auth-segment: /realms/%s/protocol/openid-connect/token
+    delete-user-segment: /admin/realms/%s/users/%s
+bot:
+  name: University_crm_bot
+  token: 5463225373:AAG-YrWjuiavI-kC5nTxIqlMBUMY6ZDt9l0
+
+app:
+  scheduler:
+    enable: true
+  kafka:
+    bootstrap-server: localhost:9092
+
